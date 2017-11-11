@@ -64,9 +64,6 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="acW-dT-cKf"/>
-                    <connections>
-                        <segue destination="tYV-Ql-pSn" kind="presentation" identifier="ShowTrip" id="pdj-bB-sHI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -75,7 +72,7 @@
         <!--Trip View Controller-->
         <scene sceneID="Cxz-vi-Y7Y">
             <objects>
-                <viewController id="tYV-Ql-pSn" customClass="TripViewController" customModule="ShuffleTrip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripViewController" id="tYV-Ql-pSn" customClass="TripViewController" customModule="ShuffleTrip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vtM-hp-Fd8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,7 +171,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="7477 539444" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWy-Lh-96J">
                                         <rect key="frame" x="67.5" y="0.0" width="200" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="Hpj-VL-4EJ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Hpj-VL-4EJ"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="28"/>
@@ -281,7 +278,4 @@
         <image name="home" width="25" height="25"/>
         <image name="trips" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="pdj-bB-sHI"/>
-    </inferredMetricsTieBreakers>
 </document>

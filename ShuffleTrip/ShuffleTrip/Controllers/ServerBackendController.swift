@@ -15,7 +15,7 @@ public class ServerBackendController {
 	static let shared = ServerBackendController()
 	
 	lazy var phoneNumber: String = {
-		UserDefaultsController.shared.loadPhoneNumber()
+		return UserDefaultsController.shared.loadPhoneNumber()
 	}()
 	
 	

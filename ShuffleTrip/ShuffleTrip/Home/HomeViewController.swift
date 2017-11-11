@@ -12,7 +12,10 @@ class HomeViewController: UIViewController {
 
 	@IBAction func requestTripButtonPressed() {
 		ServerBackendController.shared.requestRandomTrip { (trip) in
-			print(trip)
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let tripViewController = storyboard.instantiateViewController(withIdentifier: "TripViewController") as! TripViewController
+			tripViewController.trip = trip
+			self.present(tripViewController, animated: true, completion: nil)
 		}
 	}
 

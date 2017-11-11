@@ -9,7 +9,13 @@
 import UIKit
 
 class TripViewController: UIViewController {
+	
+	@IBOutlet weak var destinationLabel: UILabel!
 
-	var trip: Trip!
+	var trip: Trip! {
+		didSet {
+			destinationLabel.text = trip.destination
+		}
+	}
 
 }

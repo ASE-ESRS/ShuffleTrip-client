@@ -37,7 +37,7 @@ class WelcomeViewController: UIViewController {
 	}
 	
 	func savePhoneNumberToServer(_ phoneNumber: String) {
-		ServerBackendController.shared.save(phoneNumber)
+		ServerBackendController.shared.savePhoneNumber()
 	}
 
 }
