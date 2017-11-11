@@ -13,6 +13,8 @@
 		330D5B011FB73F0A00402016 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 330D5AFF1FB73F0A00402016 /* Main.storyboard */; };
 		330D5B031FB73F0A00402016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 330D5B021FB73F0A00402016 /* Assets.xcassets */; };
 		330D5B061FB73F0A00402016 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 330D5B041FB73F0A00402016 /* LaunchScreen.storyboard */; };
+		3317294C1FB74E5B006FE3C3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317294B1FB74E5B006FE3C3 /* WelcomeViewController.swift */; };
+		33365DFE1FB748FF0067F5E0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33365DFD1FB748FF0067F5E0 /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		330D5B021FB73F0A00402016 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		330D5B051FB73F0A00402016 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		330D5B071FB73F0A00402016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3317294B1FB74E5B006FE3C3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		33365DFD1FB748FF0067F5E0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +61,11 @@
 			isa = PBXGroup;
 			children = (
 				330D5AF91FB73F0900402016 /* AppDelegate.swift */,
+				3317294B1FB74E5B006FE3C3 /* WelcomeViewController.swift */,
 				330D5AFB1FB73F0900402016 /* FirstViewController.swift */,
 				330D5AFD1FB73F0A00402016 /* SecondViewController.swift */,
 				330D5AFF1FB73F0A00402016 /* Main.storyboard */,
+				33365DFD1FB748FF0067F5E0 /* RoundedButton.swift */,
 				330D5B021FB73F0A00402016 /* Assets.xcassets */,
 				330D5B041FB73F0A00402016 /* LaunchScreen.storyboard */,
 				330D5B071FB73F0A00402016 /* Info.plist */,
@@ -140,8 +146,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				330D5AFE1FB73F0A00402016 /* SecondViewController.swift in Sources */,
+				3317294C1FB74E5B006FE3C3 /* WelcomeViewController.swift in Sources */,
 				330D5AFA1FB73F0900402016 /* AppDelegate.swift in Sources */,
 				330D5AFC1FB73F0900402016 /* FirstViewController.swift in Sources */,
+				33365DFE1FB748FF0067F5E0 /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
