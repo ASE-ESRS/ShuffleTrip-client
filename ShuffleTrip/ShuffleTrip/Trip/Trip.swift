@@ -17,8 +17,12 @@ class Trip {
 	
 	var cost: Double
 	
-	init(destination: String, cost: Double) {
+	init(destination: String, cost: Double, latitude: Double, longitude: Double) {
 		self.destination = destination
+		
+		self.latitude = latitude
+		self.longitude = longitude
+		
 		self.cost = cost
 	}
 	

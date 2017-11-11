@@ -25,7 +25,7 @@ public class ServerBackendController {
 		let parameters: Parameters = ["phoneNumber" : phoneNumber]
 		Alamofire.request("https://httpbin.org/get", method: .post, parameters: parameters).responseJSON { jsonResponse in
 //			print(jsonResponse.result.value)
-			let trip = Trip(destination: "MOROCCO", cost: 129.55)
+			let trip = Trip(destination: "BARCELONA", cost: 129.55, latitude: 41.390205, longitude: 2.154007)
 			completionHandler(trip)
 		}
 	}
