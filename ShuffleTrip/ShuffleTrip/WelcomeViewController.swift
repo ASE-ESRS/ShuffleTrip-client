@@ -27,11 +27,17 @@ class WelcomeViewController: UIViewController {
 	
 	@IBAction func continueButtonPressed() {
 		let phoneNumber = "+44\(phoneNumberField.text!)".replacingOccurrences(of: " ", with: "")
-		verifyPhoneNumber(phoneNumber)
+		savePhoneNumberLocally(phoneNumber)
+		savePhoneNumberToServer(phoneNumber)
+		performSegue(withIdentifier: "ToPhoneNumberComplete", sender: self)
 	}
 	
-	func verifyPhoneNumber(_ phoneNumber: String) {
-//		UserDefaultsController.shared.
+	func savePhoneNumberLocally(_ phoneNumber: String) {
+		UserDefaultsController.shared.save(phoneNumber: phoneNumber)
+	}
+	
+	func savePhoneNumberToServer(_ phoneNumber: String) {
+		
 	}
 
 }
