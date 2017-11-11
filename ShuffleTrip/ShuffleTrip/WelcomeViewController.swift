@@ -26,7 +26,12 @@ class WelcomeViewController: UIViewController {
 	}
 	
 	@IBAction func continueButtonPressed() {
-		print("Phone Number: +44 \(phoneNumberField.text!)")
+		let phoneNumber = "+44\(phoneNumberField.text!)".replacingOccurrences(of: " ", with: "")
+		verifyPhoneNumber(phoneNumber)
+	}
+	
+	func verifyPhoneNumber(_ phoneNumber: String) {
+//		UserDefaultsController.shared.
 	}
 
 }
