@@ -11,6 +11,10 @@ import Foundation
 class Trip {
 	
 	var destination: String
+	
+	var latitude: Double
+	var longitude: Double
+	
 	var cost: Double
 	
 	init(destination: String, cost: Double) {
