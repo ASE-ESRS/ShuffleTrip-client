@@ -7,14 +7,32 @@
 //
 
 import Foundation
+import Alamofire
 
 public class ServerBackendController {
 	
 	/// Singleton instance
 	static let shared = ServerBackendController()
 	
+	lazy var phoneNumber: String = {
+		UserDefaultsController.shared.loadPhoneNumber()
+	}()
+	
+	
+	
+	
 	func requestRandomTrip(completionHandler: (Trip) -> Void) {
-		
+		let parameters: Parameters = ["phoneNumber" : phoneNumber]
+		Alamofire.request("https://httpbin.org/get", method: .post, parameters: parameters).response { response in
+			print(response)
+		}
+	}
+	
+	func savePhoneNumber() {
+		let parameters: Parameters = ["phoneNumber" : phoneNumber]
+		Alamofire.request("https://httpbin.org/get", method: .post, parameters: parameters).response { response in
+			print(response)
+		}
 	}
 
 }
