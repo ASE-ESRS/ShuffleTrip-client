@@ -21,10 +21,12 @@ public class ServerBackendController {
 	
 	
 	
-	func requestRandomTrip(completionHandler: (Trip) -> Void) {
+	func requestRandomTrip(completionHandler: @escaping (Trip) -> ()) {
 		let parameters: Parameters = ["phoneNumber" : phoneNumber]
-		Alamofire.request("https://httpbin.org/get", method: .post, parameters: parameters).response { response in
-			print(response)
+		Alamofire.request("https://httpbin.org/get", method: .post, parameters: parameters).responseJSON { jsonResponse in
+//			print(jsonResponse.result.value)
+			let trip = Trip(destination: "MOROCCO", cost: 129.55)
+			completionHandler(trip)
 		}
 	}
 	

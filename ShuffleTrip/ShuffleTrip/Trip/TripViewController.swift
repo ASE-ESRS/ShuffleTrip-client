@@ -12,10 +12,11 @@ class TripViewController: UIViewController {
 	
 	@IBOutlet weak var destinationLabel: UILabel!
 
-	var trip: Trip! {
-		didSet {
-			destinationLabel.text = trip.destination
-		}
+	var trip: Trip!
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		destinationLabel.text = trip.destination
 	}
 
 }

@@ -11,9 +11,11 @@ import Foundation
 class Trip {
 	
 	var destination: String
+	var cost: Double
 	
-	init(destination: String) {
+	init(destination: String, cost: Double) {
 		self.destination = destination
+		self.cost = cost
 	}
 	
 }
