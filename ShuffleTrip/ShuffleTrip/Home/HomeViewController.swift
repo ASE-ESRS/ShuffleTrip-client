@@ -11,7 +11,9 @@ import UIKit
 class HomeViewController: UIViewController {
 
 	@IBAction func requestTripButtonPressed() {
-		
+		ServerBackendController.shared.requestRandomTrip { (trip) in
+			print(trip)
+		}
 	}
 
 }

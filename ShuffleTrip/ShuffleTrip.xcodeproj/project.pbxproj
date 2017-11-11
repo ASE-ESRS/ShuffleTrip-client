@@ -16,6 +16,9 @@
 		3317294C1FB74E5B006FE3C3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3317294B1FB74E5B006FE3C3 /* WelcomeViewController.swift */; };
 		332C276B1FB771DD00226D5A /* UserDefaultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332C276A1FB771DD00226D5A /* UserDefaultsController.swift */; };
 		33365DFE1FB748FF0067F5E0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33365DFD1FB748FF0067F5E0 /* RoundedButton.swift */; };
+		33FD4BC21FB7889700E58224 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FD4BC11FB7889700E58224 /* TripViewController.swift */; };
+		33FD4BC41FB788C200E58224 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FD4BC31FB788C200E58224 /* Trip.swift */; };
+		33FD4BC71FB7896200E58224 /* ServerBackendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FD4BC61FB7896200E58224 /* ServerBackendController.swift */; };
 		C2026296B0BAF520E3A19789 /* Pods_ShuffleTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEACC3DC90BE6D4C5B9432E8 /* Pods_ShuffleTrip.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,9 @@
 		3317294B1FB74E5B006FE3C3 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		332C276A1FB771DD00226D5A /* UserDefaultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsController.swift; sourceTree = "<group>"; };
 		33365DFD1FB748FF0067F5E0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		33FD4BC11FB7889700E58224 /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
+		33FD4BC31FB788C200E58224 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		33FD4BC61FB7896200E58224 /* ServerBackendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerBackendController.swift; sourceTree = "<group>"; };
 		6F286853A461D31CFA20272D /* Pods-ShuffleTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShuffleTrip.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShuffleTrip/Pods-ShuffleTrip.debug.xcconfig"; sourceTree = "<group>"; };
 		775F77A57CEE03E38884DE50 /* Pods-ShuffleTrip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShuffleTrip.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShuffleTrip/Pods-ShuffleTrip.release.xcconfig"; sourceTree = "<group>"; };
 		DEACC3DC90BE6D4C5B9432E8 /* Pods_ShuffleTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShuffleTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,10 +87,11 @@
 				330D5AF91FB73F0900402016 /* AppDelegate.swift */,
 				3317294B1FB74E5B006FE3C3 /* WelcomeViewController.swift */,
 				33FD4BBF1FB7814600E58224 /* Home */,
-				33FD4BC01FB7814E00E58224 /* Trips */,
+				33FD4BC01FB7814E00E58224 /* Your Trips */,
+				33FD4BC51FB788C800E58224 /* Trip */,
 				330D5AFF1FB73F0A00402016 /* Main.storyboard */,
 				33365DFD1FB748FF0067F5E0 /* RoundedButton.swift */,
-				332C276A1FB771DD00226D5A /* UserDefaultsController.swift */,
+				33FD4BC81FB7896A00E58224 /* Controllers */,
 				330D5B021FB73F0A00402016 /* Assets.xcassets */,
 				330D5B041FB73F0A00402016 /* LaunchScreen.storyboard */,
 				330D5B071FB73F0A00402016 /* Info.plist */,
@@ -100,12 +107,30 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		33FD4BC01FB7814E00E58224 /* Trips */ = {
+		33FD4BC01FB7814E00E58224 /* Your Trips */ = {
 			isa = PBXGroup;
 			children = (
 				330D5AFD1FB73F0A00402016 /* TripsViewController.swift */,
 			);
-			path = Trips;
+			path = "Your Trips";
+			sourceTree = "<group>";
+		};
+		33FD4BC51FB788C800E58224 /* Trip */ = {
+			isa = PBXGroup;
+			children = (
+				33FD4BC11FB7889700E58224 /* TripViewController.swift */,
+				33FD4BC31FB788C200E58224 /* Trip.swift */,
+			);
+			path = Trip;
+			sourceTree = "<group>";
+		};
+		33FD4BC81FB7896A00E58224 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				33FD4BC61FB7896200E58224 /* ServerBackendController.swift */,
+				332C276A1FB771DD00226D5A /* UserDefaultsController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		548DE13BE2B433FDD9CE8B1C /* Frameworks */ = {
@@ -247,7 +272,10 @@
 			files = (
 				330D5AFE1FB73F0A00402016 /* TripsViewController.swift in Sources */,
 				3317294C1FB74E5B006FE3C3 /* WelcomeViewController.swift in Sources */,
+				33FD4BC21FB7889700E58224 /* TripViewController.swift in Sources */,
+				33FD4BC71FB7896200E58224 /* ServerBackendController.swift in Sources */,
 				330D5AFA1FB73F0900402016 /* AppDelegate.swift in Sources */,
+				33FD4BC41FB788C200E58224 /* Trip.swift in Sources */,
 				330D5AFC1FB73F0900402016 /* HomeViewController.swift in Sources */,
 				332C276B1FB771DD00226D5A /* UserDefaultsController.swift in Sources */,
 				33365DFE1FB748FF0067F5E0 /* RoundedButton.swift in Sources */,
