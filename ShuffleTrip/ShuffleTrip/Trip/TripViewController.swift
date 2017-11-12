@@ -73,6 +73,11 @@ class TripViewController: UIViewController {
 	// MARK: -
 	
 	@IBAction func bookTripButtonPressed() {
+		LocalTemporaryStorageController.shared.trips.append(trip)
+		dismissButtonPressed()
+	}
+	
+	@IBAction func dismissButtonPressed() {
 		dismiss(animated: true, completion: nil)
 	}
 
