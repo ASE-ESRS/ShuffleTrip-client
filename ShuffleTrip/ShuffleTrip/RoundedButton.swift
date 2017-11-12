@@ -24,7 +24,7 @@ import QuartzCore
 	override var isEnabled: Bool {
 		didSet {
 			UIView.animate(withDuration: 0.2) {
-				self.backgroundColor = self.isHighlighted ? UIColor.lightGray : self.backgroundColor
+				self.backgroundColor = self.isHighlighted ? UIColor.lightGray : #colorLiteral(red: 0, green: 0.7699727274, blue: 0.879308364, alpha: 1)
 			}
 		}
 	}

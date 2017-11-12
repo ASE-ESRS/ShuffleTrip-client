@@ -43,12 +43,15 @@ class HomeViewController: UIViewController {
 	// MARK: -
 
 	@IBAction func requestTripButtonPressed() {
-		UIView.animate(withDuration: 0.3) {
-			self.requestTripButton.isEnabled = false
-			self.requestTripButton.setTitle("Requesting...", for: .normal)
-		}
+		requestTripButton.isEnabled = false
+		requestTripButton.setTitle("Requesting...", for: .normal)
 		
-		ServerBackendController.shared.requestRandomTrip { (trip) in
+		ServerBackendController.shared.requestRandomTrip { (trip, error) in
+			guard let trip = trip else {
+				self.requestTripButton.isEnabled = true
+				self.requestTripButton.setTitle("Request Random Trip", for: .normal)
+				return
+			}
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let tripViewController = storyboard.instantiateViewController(withIdentifier: "TripViewController") as! TripViewController
 			tripViewController.trip = trip

@@ -23,7 +23,7 @@ public class ServerBackendController {
 	
 	// MARK: -
 	
-	func requestRandomTrip(completionHandler: @escaping (Trip) -> ()) {
+	func requestRandomTrip(completionHandler: @escaping (Trip?, Bool?) -> ()) {
 		Alamofire.request("https://iagx7vnad8.execute-api.eu-west-2.amazonaws.com/prod/shuffleTrip?route=trips/shuffle", method: .get, encoding: JSONEncoding.default).responseJSON { response in
 			if let status = response.response?.statusCode {
 				switch status {
@@ -46,10 +46,11 @@ public class ServerBackendController {
 										airportCoordinates: (longitude, latitude),
 										airportCity: 	json["country_city"] as! String,
 										cost: 			json["price"] as! Double)
-						completionHandler(trip)
+						completionHandler(trip, nil)
 					}
 				default:
 					print("[ServerBackendController]\t\(status): ERROR — \(response)")
+					completionHandler(nil, true)
 				}
 			}
 		}
