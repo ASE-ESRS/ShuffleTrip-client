@@ -10,18 +10,39 @@ import Foundation
 
 class Trip {
 	
-	var destination: String
+	let countryName: String
+	let countryID: String
 	
-	var latitude: Double
-	var longitude: Double
+	lazy var countryFlag: String = {
+		var flagString = ""
+		for uS in countryID.uppercased().unicodeScalars {
+			flagString += String(UnicodeScalar(127397 + uS.value)!)
+		}
+		return flagString
+	}()
+	
+	let airportName: String
+	let airportID: String
+	
+	let airportCoordinates: (longitude: String, latitude: String)
+	let airportCity: String
 	
 	var cost: Double
 	
-	init(destination: String, cost: Double, latitude: Double, longitude: Double) {
-		self.destination = destination
+	
+	
+	
+	// MARK: -
+	
+	init(countryName: String, countryID: String, airportName: String, airportID: String, airportCoordinates: (longitude: String, latitude: String), airportCity: String, cost: Double) {
+		self.countryName = countryName
+		self.countryID = countryID
 		
-		self.latitude = latitude
-		self.longitude = longitude
+		self.airportName = airportName
+		self.airportID = airportID
+		
+		self.airportCoordinates = airportCoordinates
+		self.airportCity = airportCity
 		
 		self.cost = cost
 	}

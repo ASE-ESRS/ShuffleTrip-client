@@ -20,6 +20,10 @@ class TripViewController: UIViewController {
 
 	var trip: Trip!
 	
+	
+	
+	// MARK: - Initialisation
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -28,12 +32,9 @@ class TripViewController: UIViewController {
 	
 	func configureInterface() {
 		// Set the destination
-		destinationLabel.text = trip.destination
+//		destinationLabel.text = trip.destination
 		
-		// Reposition the map view.
-		let location = CLLocationCoordinate2D(latitude: trip.latitude, longitude: trip.longitude)
-		mapView.setRegion(MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8)), animated: false)
-		
+		configureAndRepositionMap()
 		
 		// Split the cost into significant and insignificant bits,.
 		let costString = String(trip.cost)
@@ -41,5 +42,30 @@ class TripViewController: UIViewController {
 		costSig.text = "\(costString[..<pointIndex])"
 		costInsig.text = "\(costString[pointIndex...])"
 	}
+	
+	func configureAndRepositionMap() {
+		mapView.delegate = self
+		
+		// Reposition the map view.
+//		let location = CLLocationCoordinate2D(latitude: trip.latitude, longitude: trip.longitude)
+//		mapView.setRegion(MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8)), animated: false)
+		
+		// Place the annotation
+//		let airportAnnotation = MKPointAnnotation()
+//		airportAnnotation.coordinate = location
+//		mapView.addAnnotation(airportAnnotation)
+	}
 
+}
+
+extension TripViewController: MKMapViewDelegate {
+	
+	func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+		// Select the annotation as soon as it's added.
+		if let annotationView = views.first as? MKMarkerAnnotationView {
+			annotationView.glyphText = "CBA"
+			mapView.selectAnnotation(annotationView.annotation!, animated: true)
+		}
+	}
+	
 }
