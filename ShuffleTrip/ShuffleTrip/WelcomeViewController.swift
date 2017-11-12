@@ -20,6 +20,14 @@ class WelcomeViewController: UIViewController {
 	
 	// MARK: -
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		if UserDefaultsController.shared.loadPhoneNumber().count < 1 {
+			performSegue(withIdentifier: "ToPhoneNumberComplete", sender: self)
+		}
+	}
+	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		phoneNumberField.becomeFirstResponder()

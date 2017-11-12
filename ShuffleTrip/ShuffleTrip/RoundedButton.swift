@@ -21,6 +21,14 @@ import QuartzCore
 		}
 	}
 	
+	override var isEnabled: Bool {
+		didSet {
+			UIView.animate(withDuration: 0.2) {
+				self.backgroundColor = self.isHighlighted ? UIColor.lightGray : self.backgroundColor
+			}
+		}
+	}
+	
 	/// The corner radius of this rounded button.
 	@IBInspectable internal var cornerRadius: CGFloat = 4 {
 		didSet {

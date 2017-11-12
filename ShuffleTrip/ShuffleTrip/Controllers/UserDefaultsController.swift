@@ -26,7 +26,7 @@ public class UserDefaultsController {
 	}
 	
 	public func loadPhoneNumber() -> String {
-		return defaults.string(forKey: "phoneNumber")!
+		return defaults.string(forKey: "phoneNumber") ?? ""
 	}
 	
 }

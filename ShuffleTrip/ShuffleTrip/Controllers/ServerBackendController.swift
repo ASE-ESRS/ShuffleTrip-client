@@ -22,18 +22,18 @@ public class ServerBackendController {
 	
 	
 	func requestRandomTrip(completionHandler: @escaping (Trip) -> ()) {
-		let parameters: Parameters = ["phoneNumber" : phoneNumber]
-		Alamofire.request("https://httpbin.org/get", method: .post, parameters: parameters).responseJSON { jsonResponse in
-//			print(jsonResponse.result.value)
-			let trip = Trip(destination: "BARCELONA", cost: 129.55, latitude: 41.390205, longitude: 2.154007)
-			completionHandler(trip)
+		let parameters: Parameters = ["userId" : phoneNumber]
+		Alamofire.request("https://iagx7vnad8.execute-api.eu-west-2.amazonaws.com/prod/shuffleTrip?route=trips/shuffle", method: .post, parameters: parameters, encoding: URLEncoding.queryString).responseJSON { jsonResponse in
+////			print(jsonResponse.result.value)
+//			let trip = Trip(destination: "BARCELONA", cost: 129.55, latitude: 41.390205, longitude: 2.154007)
+//			completionHandler(trip)
 		}
 	}
 	
 	func savePhoneNumber() {
-		let parameters: Parameters = ["phoneNumber" : phoneNumber]
-		Alamofire.request("https://httpbin.org/get", method: .post, parameters: parameters).response { response in
-			print(response)
+		let parameters: Parameters = ["userId" : phoneNumber]
+		Alamofire.request("https://4wmuzhlr5b.execute-api.eu-west-2.amazonaws.com/prod/StorePhoneNumber", method: .post, parameters: parameters, encoding: URLEncoding.queryString).response { response in
+			print("Request POSTed")
 		}
 	}
 

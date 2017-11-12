@@ -9,8 +9,15 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+	
+	@IBOutlet weak var requestTripButton: UIButton!
 
 	@IBAction func requestTripButtonPressed() {
+		UIView.animate(withDuration: 0.3) {
+			self.requestTripButton.isEnabled = false
+			self.requestTripButton.setTitle("Requesting...", for: .normal)
+		}
+		
 		ServerBackendController.shared.requestRandomTrip { (trip) in
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let tripViewController = storyboard.instantiateViewController(withIdentifier: "TripViewController") as! TripViewController
