@@ -165,12 +165,14 @@
                                 <constraints>
                                     <constraint firstItem="AMs-Hi-XMe" firstAttribute="leading" secondItem="K6Y-Ls-5Ko" secondAttribute="leading" id="8Rw-aN-qwJ"/>
                                     <constraint firstItem="8qB-SP-dYa" firstAttribute="leading" secondItem="uTC-YT-SVE" secondAttribute="trailing" id="DUt-D7-054"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hIG-l2-8m6" secondAttribute="trailing" constant="20" symbolic="YES" id="E6Z-5y-Zw1"/>
                                     <constraint firstItem="AMs-Hi-XMe" firstAttribute="top" secondItem="K6Y-Ls-5Ko" secondAttribute="top" id="G6B-Ie-qpn"/>
                                     <constraint firstItem="hIG-l2-8m6" firstAttribute="firstBaseline" secondItem="8qB-SP-dYa" secondAttribute="firstBaseline" id="JaV-cW-SJx"/>
                                     <constraint firstItem="8qB-SP-dYa" firstAttribute="centerX" secondItem="K6Y-Ls-5Ko" secondAttribute="centerX" constant="-8" id="OW1-ZM-nws"/>
                                     <constraint firstAttribute="height" constant="70" id="VfG-Pj-T3O"/>
                                     <constraint firstAttribute="trailing" secondItem="AMs-Hi-XMe" secondAttribute="trailing" id="Wzu-R6-4i5"/>
                                     <constraint firstItem="HEG-Mt-QdL" firstAttribute="leading" secondItem="K6Y-Ls-5Ko" secondAttribute="leading" id="Y00-do-At6"/>
+                                    <constraint firstItem="uTC-YT-SVE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="K6Y-Ls-5Ko" secondAttribute="leading" constant="20" symbolic="YES" id="b7O-3Y-veC"/>
                                     <constraint firstAttribute="bottom" secondItem="HEG-Mt-QdL" secondAttribute="bottom" id="cgH-xO-Ops"/>
                                     <constraint firstAttribute="trailing" secondItem="HEG-Mt-QdL" secondAttribute="trailing" id="prk-zn-CtB"/>
                                     <constraint firstItem="8qB-SP-dYa" firstAttribute="centerY" secondItem="K6Y-Ls-5Ko" secondAttribute="centerY" id="sC0-RK-XRb"/>
@@ -185,7 +187,7 @@
                                     <constraint firstAttribute="height" constant="45" id="Oh4-bs-A3I"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <state key="normal" title="Book Trip">
+                                <state key="normal" title="Dismiss">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -205,6 +207,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKB-Qf-xtt" customClass="RoundedButton" customModule="ShuffleTrip" customModuleProvider="target">
+                                <rect key="frame" x="16" y="545" width="343" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.7699727274" blue="0.87930836400000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="7UP-4Y-w4j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" title="Book Trip">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="bookTripButtonPressed" destination="tYV-Ql-pSn" eventType="touchUpInside" id="X7z-au-OMJ"/>
+                                    <action selector="continueButtonPressed" destination="JIO-dJ-Qyp" eventType="touchUpInside" id="hL7-bb-O6H"/>
+                                    <action selector="requestTripButtonPressed" destination="9pv-A4-QxB" eventType="touchUpInside" id="btt-FF-8EH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -212,18 +235,22 @@
                             <constraint firstItem="hdz-EG-jeU" firstAttribute="leading" secondItem="dPC-jl-XUG" secondAttribute="leading" id="4CZ-Vv-eQE"/>
                             <constraint firstItem="sZA-cZ-XS0" firstAttribute="top" secondItem="URv-KY-1Sg" secondAttribute="bottom" constant="8" id="FKE-FI-VXK"/>
                             <constraint firstItem="K6Y-Ls-5Ko" firstAttribute="trailing" secondItem="dPC-jl-XUG" secondAttribute="trailing" id="IHh-iP-d0J"/>
+                            <constraint firstItem="3ec-Gb-av2" firstAttribute="top" secondItem="hKB-Qf-xtt" secondAttribute="bottom" constant="12" id="KjT-fH-kAb"/>
                             <constraint firstItem="6e2-0D-zyY" firstAttribute="top" secondItem="dPC-jl-XUG" secondAttribute="top" constant="10" id="L1I-pw-rgN"/>
                             <constraint firstItem="URv-KY-1Sg" firstAttribute="centerX" secondItem="vtM-hp-Fd8" secondAttribute="centerX" id="Mcf-NQ-edz"/>
                             <constraint firstItem="K6Y-Ls-5Ko" firstAttribute="top" secondItem="hdz-EG-jeU" secondAttribute="bottom" constant="30" id="NAh-ei-xxt"/>
                             <constraint firstItem="URv-KY-1Sg" firstAttribute="top" secondItem="dPC-jl-XUG" secondAttribute="top" constant="20" id="UhU-yu-Bul"/>
                             <constraint firstItem="dPC-jl-XUG" firstAttribute="bottom" secondItem="3ec-Gb-av2" secondAttribute="bottom" constant="20" id="WBu-Fu-lK6"/>
+                            <constraint firstItem="hKB-Qf-xtt" firstAttribute="leading" secondItem="dPC-jl-XUG" secondAttribute="leading" constant="16" id="aiC-UT-kJN"/>
                             <constraint firstItem="dPC-jl-XUG" firstAttribute="trailing" secondItem="3ec-Gb-av2" secondAttribute="trailing" constant="16" id="aoJ-Sw-WLH"/>
                             <constraint firstItem="K6Y-Ls-5Ko" firstAttribute="leading" secondItem="dPC-jl-XUG" secondAttribute="leading" id="eyU-KB-Huv"/>
+                            <constraint firstItem="6e2-0D-zyY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="URv-KY-1Sg" secondAttribute="trailing" constant="6" id="hMU-25-mq9"/>
                             <constraint firstItem="hdz-EG-jeU" firstAttribute="top" secondItem="sZA-cZ-XS0" secondAttribute="bottom" constant="24" id="hVo-rv-kLs"/>
                             <constraint firstItem="dPC-jl-XUG" firstAttribute="trailing" secondItem="sZA-cZ-XS0" secondAttribute="trailing" constant="30" id="oBd-Fy-nNc"/>
                             <constraint firstItem="dPC-jl-XUG" firstAttribute="trailing" secondItem="6e2-0D-zyY" secondAttribute="trailing" constant="16" id="sCn-Qj-e37"/>
                             <constraint firstItem="sZA-cZ-XS0" firstAttribute="leading" secondItem="dPC-jl-XUG" secondAttribute="leading" constant="30" id="ua4-EH-zRn"/>
                             <constraint firstItem="hdz-EG-jeU" firstAttribute="trailing" secondItem="dPC-jl-XUG" secondAttribute="trailing" id="unR-M0-nwX"/>
+                            <constraint firstItem="dPC-jl-XUG" firstAttribute="trailing" secondItem="hKB-Qf-xtt" secondAttribute="trailing" constant="16" id="yH3-LZ-gDd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dPC-jl-XUG"/>
                     </view>

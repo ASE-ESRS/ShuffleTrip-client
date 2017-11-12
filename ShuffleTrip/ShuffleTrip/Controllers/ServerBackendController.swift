@@ -34,7 +34,7 @@ public class ServerBackendController {
 						
 						let countryID = tripJSON["country_id"] as! String
 						
-						self.getLatLongForCountryWith(countryCode: countryID, handler: { (lat, long) in
+						self.getLatLongForCountryWith(countryCode: countryID, handler: { lat, long in
 							let trip = Trip(countryName: 	tripJSON["country_name"] as! String,
 											countryID: 		countryID,
 											latLong:		(lat, long),
@@ -70,9 +70,7 @@ public class ServerBackendController {
 	
 	func savePhoneNumber() {
 		let parameters: Parameters = ["userId" : phoneNumber]
-		Alamofire.request("https://4wmuzhlr5b.execute-api.eu-west-2.amazonaws.com/prod/StorePhoneNumber", method: .post, parameters: parameters, encoding: URLEncoding.queryString).response { response in
-			print("[ServerBackendController]\tPhone number POST request sent")
-		}
+		let _ = Alamofire.request("https://4wmuzhlr5b.execute-api.eu-west-2.amazonaws.com/prod/StorePhoneNumber", method: .post, parameters: parameters, encoding: URLEncoding.queryString)
 	}
 
 }
