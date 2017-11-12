@@ -12,12 +12,22 @@ class HomeViewController: UIViewController {
 	
 	@IBOutlet weak var requestTripButton: UIButton!
 	
+	override var preferredStatusBarStyle: UIStatusBarStyle { get { return .lightContent } }
+	
+	
+	
+	
+	// MARK: -
+	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
 		if UserDefaultsController.shared.loadPhoneNumber().count < 1 {
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			self.present(storyboard.instantiateViewController(withIdentifier: "Welcome"), animated: true, completion: nil)
+			let welcomeVC = storyboard.instantiateViewController(withIdentifier: "Welcome")
+			welcomeVC.modalPresentationStyle = .overFullScreen
+			modalPresentationStyle = .overCurrentContext
+			self.present(welcomeVC, animated: true, completion: nil)
 		}
 	}
 

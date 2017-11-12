@@ -27,6 +27,8 @@ class WelcomeViewController: UIViewController {
 	}
 	
 	@IBAction func continueButtonPressed() {
+		phoneNumberField.resignFirstResponder()
+		
 		let phoneNumber = "+44\(phoneNumberField.text!)".replacingOccurrences(of: " ", with: "")
 		savePhoneNumberLocally(phoneNumber)
 		savePhoneNumberToServer(phoneNumber)
