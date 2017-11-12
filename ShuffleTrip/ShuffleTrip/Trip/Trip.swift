@@ -21,6 +21,8 @@ class Trip {
 		return flagString
 	}()
 	
+	let latLong: (Double, Double)
+	
 	var cost: Double
 	
 	
@@ -28,9 +30,11 @@ class Trip {
 	
 	// MARK: -
 	
-	init(countryName: String, countryID: String, cost: Double) {
+	init(countryName: String, countryID: String, latLong: (Double, Double), cost: Double) {
 		self.countryName = countryName
 		self.countryID = countryID
+		
+		self.latLong = latLong
 		
 		self.cost = cost
 	}

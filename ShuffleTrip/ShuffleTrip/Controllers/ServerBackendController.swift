@@ -32,15 +32,38 @@ public class ServerBackendController {
 						let json = result as! Dictionary<String, Any>
 						let tripJSON = json["trip"]! as! Dictionary<String, Any>
 						
-						let trip = Trip(countryName: 	tripJSON["country_name"] as! String,
-										countryID: 		tripJSON["country_id"] as! String,
-										cost: 			tripJSON["cost"] as! Double)
-						completionHandler(trip)
+						let countryID = tripJSON["country_id"] as! String
+						
+						self.getLatLongForCountryWith(countryCode: countryID, handler: { (lat, long) in
+							let trip = Trip(countryName: 	tripJSON["country_name"] as! String,
+											countryID: 		countryID,
+											latLong:		(lat, long),
+											cost: 			tripJSON["cost"] as! Double)
+							completionHandler(trip)
+						})
 					}
 				default:
 					print("[ServerBackendController]\t\(status): ERROR — \(response)")
 					completionHandler(nil)
 				}
+			}
+		}
+	}
+	
+	func getLatLongForCountryWith(countryCode: String, handler: @escaping (Double, Double) -> ()) {
+		Alamofire.request("https://restcountries.eu/rest/v2/alpha/\(countryCode)").responseJSON { response in
+			if let status = response.response?.statusCode {
+				switch status {
+				case 200:
+					if let result = response.result.value as? Dictionary<String, Any> {
+						let latLong = result["latlng"] as! Array<Double>
+						handler(latLong.first!, latLong.last!)
+					}
+				default:
+					handler(0, 0)
+				}
+			} else {
+				handler(0, 0)
 			}
 		}
 	}

@@ -57,13 +57,13 @@ class TripViewController: UIViewController {
 		mapView.delegate = self
 		
 		// Reposition the map view.
-//		let location = CLLocationCoordinate2D(latitude: trip.latitude, longitude: trip.longitude)
-//		mapView.setRegion(MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8)), animated: false)
+		let location = CLLocationCoordinate2D(latitude: trip.latLong.0, longitude: trip.latLong.1)
+		mapView.setRegion(MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8)), animated: false)
 		
 		// Place the annotation
-//		let airportAnnotation = MKPointAnnotation()
-//		airportAnnotation.coordinate = location
-//		mapView.addAnnotation(airportAnnotation)
+		let airportAnnotation = MKPointAnnotation()
+		airportAnnotation.coordinate = location
+		mapView.addAnnotation(airportAnnotation)
 	}
 	
 	
