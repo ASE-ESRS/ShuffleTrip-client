@@ -27,6 +27,8 @@ class Trip {
 	
 	var booked = false
 	
+	var flightTime: Date?
+	
 	
 	
 	

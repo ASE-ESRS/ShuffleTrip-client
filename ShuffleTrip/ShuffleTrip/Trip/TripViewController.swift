@@ -22,8 +22,11 @@ class TripViewController: UIViewController {
 	@IBOutlet weak var countdownLabel: UILabel!
 	@IBOutlet weak var bookTripButton: UIButton!
 	@IBOutlet weak var billedLabel: UILabel!
+	@IBOutlet weak var checkinLabel: UILabel!
 
 	var trip: Trip!
+	
+	
 	
 	
 	
@@ -37,12 +40,16 @@ class TripViewController: UIViewController {
 		
 		if trip.booked {
 			bookTripButton.isHidden = true
-			countdownLabel.isHidden = false
-			billedLabel.isHidden = false
+			countdownLabel.isHidden = true
+			billedLabel.isHidden = true
+			checkinLabel.isHidden = false
+			
+			timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
 		} else {
 			bookTripButton.isHidden = false
 			countdownLabel.isHidden = true
 			billedLabel.isHidden = true
+			checkinLabel.isHidden = true
 		}
 	}
 	
@@ -88,11 +95,31 @@ class TripViewController: UIViewController {
 	
 	@IBAction func bookTripButtonPressed() {
 		trip.booked = true
+		let calendar = Calendar.current
+		let currentDate = Date()
+		trip.flightTime = calendar.date(byAdding: .hour, value: 26, to: currentDate)
+			
 		LocalTemporaryStorageController.shared.trips.append(trip)
 		
 		bookTripButton.isHidden = true
-		countdownLabel.isHidden = false
+		
 		billedLabel.isHidden = true
+		
+		timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+	}
+	
+	var timer: Timer?
+	
+	@objc func updateCountdown() {
+		let calendar = Calendar.current
+		
+		let currentDate = Date()
+		
+		let dateDiffComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: currentDate, to: trip.flightTime!)
+		
+		countdownLabel.text = "\(dateDiffComponents.hour!)h \(dateDiffComponents.minute!)m \(dateDiffComponents.second!)s"
+		countdownLabel.isHidden = false
+		checkinLabel.isHidden = false
 	}
 	
 	@IBAction func dismissButtonPressed() {

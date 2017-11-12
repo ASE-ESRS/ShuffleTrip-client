@@ -34,6 +34,11 @@ public class ServerBackendController {
 						
 						let countryID = tripJSON["country_id"] as! String
 						
+						guard tripJSON["cost"] != nil else {
+							self.requestRandomTrip(completionHandler: completionHandler)
+							return
+						}
+						
 						self.getLatLongForCountryWith(countryCode: countryID, handler: { lat, long in
 							let trip = Trip(countryName: 	tripJSON["country_name"] as! String,
 											countryID: 		countryID,
