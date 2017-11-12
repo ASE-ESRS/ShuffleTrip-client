@@ -25,6 +25,8 @@ class Trip {
 	
 	var cost: Double
 	
+	var booked = false
+	
 	
 	
 	
@@ -36,7 +38,7 @@ class Trip {
 		
 		self.latLong = latLong
 		
-		self.cost = cost
+		self.cost = cost * 2 // (for the return flight)
 	}
 	
 }

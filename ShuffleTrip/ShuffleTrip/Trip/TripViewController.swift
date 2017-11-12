@@ -18,6 +18,10 @@ class TripViewController: UIViewController {
 	
 	@IBOutlet weak var costSig: UILabel!
 	@IBOutlet weak var costInsig: UILabel!
+	
+	@IBOutlet weak var countdownLabel: UILabel!
+	@IBOutlet weak var bookTripButton: UIButton!
+	@IBOutlet weak var billedLabel: UILabel!
 
 	var trip: Trip!
 	
@@ -30,6 +34,16 @@ class TripViewController: UIViewController {
 		super.viewDidLoad()
 		
 		configureInterface()
+		
+		if trip.booked {
+			bookTripButton.isHidden = true
+			countdownLabel.isHidden = false
+			billedLabel.isHidden = false
+		} else {
+			bookTripButton.isHidden = false
+			countdownLabel.isHidden = true
+			billedLabel.isHidden = true
+		}
 	}
 	
 	func configureInterface() {
@@ -73,8 +87,12 @@ class TripViewController: UIViewController {
 	// MARK: -
 	
 	@IBAction func bookTripButtonPressed() {
+		trip.booked = true
 		LocalTemporaryStorageController.shared.trips.append(trip)
-		dismissButtonPressed()
+		
+		bookTripButton.isHidden = true
+		countdownLabel.isHidden = false
+		billedLabel.isHidden = true
 	}
 	
 	@IBAction func dismissButtonPressed() {
