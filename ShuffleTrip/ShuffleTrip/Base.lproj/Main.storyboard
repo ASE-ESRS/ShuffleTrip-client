@@ -245,7 +245,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="os8-9L-gEx">
             <objects>
-                <viewController id="JIO-dJ-Qyp" customClass="WelcomeViewController" customModule="ShuffleTrip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Welcome" id="JIO-dJ-Qyp" customClass="WelcomeViewController" customModule="ShuffleTrip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JG5-me-BB1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -346,12 +346,11 @@
                     </view>
                     <connections>
                         <outlet property="phoneNumberField" destination="mWy-Lh-96J" id="4B7-4D-R6T"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="ToPhoneNumberComplete" id="4ah-cS-kxg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fk6-WZ-sUA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-850" y="0.0"/>
+            <point key="canvasLocation" x="-1" y="-744"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

@@ -11,6 +11,15 @@ import UIKit
 class HomeViewController: UIViewController {
 	
 	@IBOutlet weak var requestTripButton: UIButton!
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		if UserDefaultsController.shared.loadPhoneNumber().count < 1 {
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			self.present(storyboard.instantiateViewController(withIdentifier: "Welcome"), animated: true, completion: nil)
+		}
+	}
 
 	@IBAction func requestTripButtonPressed() {
 		UIView.animate(withDuration: 0.3) {

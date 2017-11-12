@@ -20,16 +20,9 @@ class WelcomeViewController: UIViewController {
 	
 	// MARK: -
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
-		if UserDefaultsController.shared.loadPhoneNumber().count < 1 {
-			performSegue(withIdentifier: "ToPhoneNumberComplete", sender: self)
-		}
-	}
-	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
+		
 		phoneNumberField.becomeFirstResponder()
 	}
 	
@@ -37,7 +30,7 @@ class WelcomeViewController: UIViewController {
 		let phoneNumber = "+44\(phoneNumberField.text!)".replacingOccurrences(of: " ", with: "")
 		savePhoneNumberLocally(phoneNumber)
 		savePhoneNumberToServer(phoneNumber)
-		performSegue(withIdentifier: "ToPhoneNumberComplete", sender: self)
+		dismiss(animated: true, completion: nil)
 	}
 	
 	func savePhoneNumberLocally(_ phoneNumber: String) {
