@@ -18,8 +18,16 @@ class TripViewController: UIViewController {
 	
 	@IBOutlet weak var costSig: UILabel!
 	@IBOutlet weak var costInsig: UILabel!
+	
+	@IBOutlet weak var countdownLabel: UILabel!
+	@IBOutlet weak var bookTripButton: UIButton!
+	@IBOutlet weak var billedLabel: UILabel!
+	@IBOutlet weak var checkinLabel: UILabel!
 
 	var trip: Trip!
+	
+	
+	
 	
 	
 	
@@ -29,6 +37,20 @@ class TripViewController: UIViewController {
 		super.viewDidLoad()
 		
 		configureInterface()
+		
+		if trip.booked {
+			bookTripButton.isHidden = true
+			countdownLabel.isHidden = true
+			billedLabel.isHidden = true
+			checkinLabel.isHidden = false
+			
+			timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+		} else {
+			bookTripButton.isHidden = false
+			countdownLabel.isHidden = true
+			billedLabel.isHidden = true
+			checkinLabel.isHidden = true
+		}
 	}
 	
 	func configureInterface() {
@@ -57,13 +79,13 @@ class TripViewController: UIViewController {
 		mapView.delegate = self
 		
 		// Reposition the map view.
-//		let location = CLLocationCoordinate2D(latitude: trip.latitude, longitude: trip.longitude)
-//		mapView.setRegion(MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8)), animated: false)
+		let location = CLLocationCoordinate2D(latitude: trip.latLong.0, longitude: trip.latLong.1)
+		mapView.setRegion(MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8)), animated: false)
 		
 		// Place the annotation
-//		let airportAnnotation = MKPointAnnotation()
-//		airportAnnotation.coordinate = location
-//		mapView.addAnnotation(airportAnnotation)
+		let airportAnnotation = MKPointAnnotation()
+		airportAnnotation.coordinate = location
+		mapView.addAnnotation(airportAnnotation)
 	}
 	
 	
@@ -72,6 +94,35 @@ class TripViewController: UIViewController {
 	// MARK: -
 	
 	@IBAction func bookTripButtonPressed() {
+		trip.booked = true
+		let calendar = Calendar.current
+		let currentDate = Date()
+		trip.flightTime = calendar.date(byAdding: .hour, value: 26, to: currentDate)
+			
+		LocalTemporaryStorageController.shared.trips.append(trip)
+		
+		bookTripButton.isHidden = true
+		
+		billedLabel.isHidden = true
+		
+		timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+	}
+	
+	var timer: Timer?
+	
+	@objc func updateCountdown() {
+		let calendar = Calendar.current
+		
+		let currentDate = Date()
+		
+		let dateDiffComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: currentDate, to: trip.flightTime!)
+		
+		countdownLabel.text = "\(dateDiffComponents.hour!)h \(dateDiffComponents.minute!)m \(dateDiffComponents.second!)s"
+		countdownLabel.isHidden = false
+		checkinLabel.isHidden = false
+	}
+	
+	@IBAction func dismissButtonPressed() {
 		dismiss(animated: true, completion: nil)
 	}
 

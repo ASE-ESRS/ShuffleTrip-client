@@ -29,8 +29,7 @@ class HomeViewController: UIViewController {
 		super.viewDidAppear(animated)
 		
 		if UserDefaultsController.shared.loadPhoneNumber().count < 1 {
-			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			let welcomeVC = storyboard.instantiateViewController(withIdentifier: "Welcome")
+			let welcomeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Welcome")
 			welcomeVC.modalPresentationStyle = .overFullScreen
 			modalPresentationStyle = .overCurrentContext
 			self.present(welcomeVC, animated: true, completion: nil)
@@ -52,9 +51,11 @@ class HomeViewController: UIViewController {
 				self.requestTripButton.setTitle("Request Random Trip", for: .normal)
 				return
 			}
+			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let tripViewController = storyboard.instantiateViewController(withIdentifier: "TripViewController") as! TripViewController
 			tripViewController.trip = trip
+			
 			self.present(tripViewController, animated: true, completion: {
 				self.requestTripButton.isEnabled = true
 				self.requestTripButton.setTitle("Request Random Trip", for: .normal)

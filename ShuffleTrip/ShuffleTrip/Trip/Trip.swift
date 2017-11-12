@@ -21,18 +21,26 @@ class Trip {
 		return flagString
 	}()
 	
+	let latLong: (Double, Double)
+	
 	var cost: Double
+	
+	var booked = false
+	
+	var flightTime: Date?
 	
 	
 	
 	
 	// MARK: -
 	
-	init(countryName: String, countryID: String, cost: Double) {
+	init(countryName: String, countryID: String, latLong: (Double, Double), cost: Double) {
 		self.countryName = countryName
 		self.countryID = countryID
 		
-		self.cost = cost
+		self.latLong = latLong
+		
+		self.cost = cost * 2 // (for the return flight)
 	}
 	
 }
