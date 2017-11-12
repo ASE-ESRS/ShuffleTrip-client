@@ -11,7 +11,7 @@ import Foundation
 class Trip {
 	
 	let countryName: String
-	let countryID: String
+	fileprivate let countryID: String
 	
 	lazy var countryFlag: String = {
 		var flagString = ""
@@ -21,12 +21,6 @@ class Trip {
 		return flagString
 	}()
 	
-	let airportName: String
-	let airportID: String
-	
-	let airportCoordinates: (longitude: String, latitude: String)
-	let airportCity: String
-	
 	var cost: Double
 	
 	
@@ -34,15 +28,9 @@ class Trip {
 	
 	// MARK: -
 	
-	init(countryName: String, countryID: String, airportName: String, airportID: String, airportCoordinates: (longitude: String, latitude: String), airportCity: String, cost: Double) {
+	init(countryName: String, countryID: String, cost: Double) {
 		self.countryName = countryName
 		self.countryID = countryID
-		
-		self.airportName = airportName
-		self.airportID = airportID
-		
-		self.airportCoordinates = airportCoordinates
-		self.airportCity = airportCity
 		
 		self.cost = cost
 	}

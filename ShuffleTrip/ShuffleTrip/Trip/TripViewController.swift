@@ -12,6 +12,7 @@ import MapKit
 class TripViewController: UIViewController {
 	
 	@IBOutlet weak var destinationLabel: UILabel!
+	@IBOutlet weak var flagLabel: UILabel!
 	
 	@IBOutlet weak var mapView: MKMapView!
 	
@@ -32,7 +33,8 @@ class TripViewController: UIViewController {
 	
 	func configureInterface() {
 		// Set the destination
-//		destinationLabel.text = trip.destination
+		destinationLabel.text = trip.countryName.uppercased()
+		flagLabel.text = trip.countryFlag
 		
 		configureAndRepositionMap()
 		
@@ -40,7 +42,15 @@ class TripViewController: UIViewController {
 		let costString = String(trip.cost)
 		let pointIndex = costString.index(of: ".")!
 		costSig.text = "\(costString[..<pointIndex])"
-		costInsig.text = "\(costString[pointIndex...])"
+		
+		// Prepend '0' if needed.
+		let penniesIndex = costString.index(after: pointIndex)
+		let pennies = costString[penniesIndex...]
+		if pennies.count == 1 {
+			costInsig.text = ". 0\(pennies)"
+		} else {
+			costInsig.text = ". \(pennies)"
+		}
 	}
 	
 	func configureAndRepositionMap() {
@@ -55,6 +65,15 @@ class TripViewController: UIViewController {
 //		airportAnnotation.coordinate = location
 //		mapView.addAnnotation(airportAnnotation)
 	}
+	
+	
+	
+	
+	// MARK: -
+	
+	@IBAction func bookTripButtonPressed() {
+		dismiss(animated: true, completion: nil)
+	}
 
 }
 
@@ -63,7 +82,7 @@ extension TripViewController: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
 		// Select the annotation as soon as it's added.
 		if let annotationView = views.first as? MKMarkerAnnotationView {
-			annotationView.glyphText = "CBA"
+			annotationView.glyphText = trip.countryFlag
 			mapView.selectAnnotation(annotationView.annotation!, animated: true)
 		}
 	}
